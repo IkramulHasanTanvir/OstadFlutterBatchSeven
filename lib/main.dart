@@ -1,5 +1,7 @@
+// Current SDK version: 3.22.1
 import 'package:flutter/material.dart';
 
+// column, row, SingleChildScrollView.
 void main() {
   runApp(IntoApp());
 }
@@ -9,49 +11,99 @@ class IntoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.cyan,
-        appBar: AppBar(
-          backgroundColor: Colors.amber,
-          title: Text('Home'),
-        ),
-        body: Center(
-          /*child: Icon(
-            Icons.ad_units,
-            size: 50,
-            color: Colors.black,
-          ),
-          child:  Image.network('https://www.facebook.com/photo/?fbid=466931605945557&set=a.100972522541469',),
-          child: Image.asset(
-            'assets/images/nature.jpg',
-            height: 400,
-            width: 400,
-            fit: BoxFit.cover,
-          ),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.ac_unit),
-          ),
-           child: TextButton(
-            onPressed: () {},
-            child: Text('Text Button'),
-          ),
-           child: GestureDetector(
-              onDoubleTap: (){},
-              child: Image.asset(
-                'assets/images/nature.jpg',
-                height: 400,
-                width: 400,
-                fit: BoxFit.cover,
-              ),
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.cyan,
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        title: Text('Home'),
+      ),
+      // multiple command shortcut[commend shift *]
+      /*body: Column(
+            //vertically arrange
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text('hi Tanvir'),
+              Text('i am a tanvir'),
+              Text('i am 20'),
+              ElevatedButton(onPressed: () {}, child: Text('pressed')),
+              IconButton(onPressed: () {}, icon: Icon(Icons.account_circle)),
+            ],
+          )*/
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          //horizaontally
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('RowInsideColumn'),
+                Text('RowInsideColumn'),
+                Text('RowInsideColumn'),
+                Text('RowInsideColumn'),
+                Text('RowInsideColumn'),
+                Text('RowInsideColumn'),
+                Text('RowInsideColumn'),
+              ],
             ),
-           */
-          child: InkWell(
-            onTap: (){
-              print('Tap button');
-            },
-            child: Text('Hello',  style: TextStyle(fontSize: 22),),
-          ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('RowInsideColumn 2'),
+                Text('RowInsideColumn 2'),
+                Text('RowInsideColumn 2'),
+                Text('RowInsideColumn 2'),
+                Text('RowInsideColumn 2'),
+                Text('RowInsideColumn 2'),
+                Text('RowInsideColumn 2'),
+                Text('RowInsideColumn 2'),
+                Text('RowInsideColumn 2'),
+              ],
+            ),
+            Row(
+              children: [
+                Text('Row 1 from column 2'),
+                Text('Row 1 from column 2'),
+                Text('Row 1 from column 2'),
+                Text('Row 1 from column 2'),
+                Text('Row 1 from column 2'),
+                Text('Row 1 from column 2'),
+                Text('Row 1 from column 2'),
+                Text('Row 1 from column 2'),
+                Text('Row 1 from column 2'),
+              ],
+            ),
+            Column(
+              children: [
+                Text('column 3'),
+                Text('column 3'),
+                Text('column 3'),
+                Text('column 3'),
+                Text('column 3'),
+                Text('column 3'),
+                Text('column 3'),
+                Text('column 3'),
+                Text('column 3'),
+                Text('column 3'),
+                Text('column 3'),
+              ],
+            )
+          ],
         ),
       ),
     );
