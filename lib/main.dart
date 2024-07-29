@@ -1,13 +1,15 @@
 // Current SDK version: 3.22.1
 import 'package:flutter/material.dart';
 
-//SizeBox, ListView, ListView.builder, GridView.builder,
-// divider, listTile, ListView.separated
+// Container, dialog, bottom-sheet
+
 void main() {
   runApp(IntoApp());
 }
 
 class IntoApp extends StatelessWidget {
+  const IntoApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,167 +27,163 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<String> friendList = ['Sakib', 'Rakib', 'Sowrove', 'Salim'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.amber,
         title: Text('Home'),
+        backgroundColor: Colors.blue,
       ),
-      /*body: ListView(
-        //scrollDirection: Axis.horizontal,
-        children: [
-          SizedBox(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Text('size box 1'),
-            ),
-          ),
-          SizedBox(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Text('size box 2'),
-            ),
-          ),
-          SizedBox(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Text('size box 3'),
-            ),
-          ),
-          SizedBox(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Text('size box 4'),
-            ),
-          ),
-          SizedBox(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Text('size box 1'),
-            ),
-          ),
-          SizedBox(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Text('size box 2'),
-            ),
-          ),
-          SizedBox(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Text('size box 3'),
-            ),
-          ),
-          SizedBox(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Text('size box 4'),
-            ),
-          ),
-        ],
-      ), */
-      /*body: ListView.builder(
-        itemCount: 1000,
-        itemBuilder: (context, index) {
-          return SizedBox(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Text(index.toString()),
-            ),
-          );
-        },
-      ),
-       */
-      /*body: ListView.builder(
-        itemCount: friendList.length,
-        //scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Text(friendList[index]);
-        },
-      ), */
-      /* body: ListView.separated(
-        itemCount: friendList.length,
-        //scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Text(friendList[index]);
-        },
-        separatorBuilder: (context, index){
-          return Divider(
-            height: 40,
-            color: Colors.red,
-            thickness: 2,
-            indent: 16,
-            endIndent: 16,
-          );
-         // return Text('this is $index separator');
-        },
-      ), */
-      /*body: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 4,
-            mainAxisSpacing: 10,
-            childAspectRatio: 2,
-          ),
-          itemCount: friendList.length,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                Text(index.toString()),
-                Text(friendList[index]),
-              ],
-            );
-          }) */
-      body: ListView.separated(
-        itemCount: friendList.length,
-        //scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return ListTile(
-            tileColor: Colors.grey.shade50,
-            title: Text(friendList[index]),
-            subtitle: Text('school friend'),
-            trailing: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.add_circle,
-                  color: Colors.amber,
-                  size: 18,
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              // color: Colors.green,
+              //padding: EdgeInsets.all(20),
+              // padding: EdgeInsets.symmetric(
+              //   vertical: 8,
+              //   horizontal: 4,
+              // ),
+              padding: EdgeInsets.only(
+                bottom: 8,
+              ),
+              margin: EdgeInsets.all(16),
+              alignment: Alignment.bottomRight,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                border: Border.all(
+                  color: Colors.red,
+                  width: 4,
                 ),
-                Text('add about'),
-              ],
+                // borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+                // shape: BoxShape.circle,
+                image: DecorationImage(
+                    image: AssetImage('assets/images/shirt.jpg'),
+                    fit: BoxFit.cover,
+                    opacity: 4),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Colors.red.withOpacity(0.5),
+                    spreadRadius: 3,
+                    blurRadius: 8,
+                    offset: Offset(0, 3),
+                  ),
+                  BoxShadow(
+                    color: Colors.red.withOpacity(0.2),
+                    spreadRadius: 3,
+                    blurRadius: 8,
+                    offset: Offset(0, 6),
+                  )
+                ],
+              ),
+              child: Text(
+                'selles man',
+                style: TextStyle(
+                  color: Colors.amber,
+                ),
+              ),
             ),
-            leading: Text(
-              (index + 1).toString(),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.amber,
+              margin: EdgeInsets.all(16),
+              padding: EdgeInsets.all(8),
             ),
-            titleTextStyle: TextStyle(fontSize: 22, color: Colors.amber),
-            onTap: () {
-              print('$index tap');
-            },
-          );
-        },
-        separatorBuilder: (context, index) {
-          return Divider(
-            height: 4,
-            color: Colors.grey.shade200,
-            thickness: 2,
-            indent: 16,
-            endIndent: 16,
-          );
-        },
+            Padding(
+              padding: EdgeInsets.all(24.0),
+              child: Text('sounds'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // showAboutDialog(
+                //   context: context,
+                //   applicationName: 'Sample',
+                //   applicationVersion: '1.0.6',
+                //   children: [
+                //     Text('Sample')
+                //   ],
+                // );
+                showDialog(
+                    context: context,
+                    barrierDismissible:false,
+                    barrierColor: Colors.black38,
+                    builder: (ctx) {
+                      return AlertDialog(
+                        title: Text('Our custom dialog'),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Sample Text'),
+                            Text('Sample Text'),
+                            Text('Sample Text'),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text('Open'),
+                          ),
+                        ],
+                        shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(8),
+                          //borderRadius: BorderRadius.zero
+                        ),
+
+                      );
+                    });
+              },
+              child: Text('Dialog'),
+            ),
+            SizedBox(height: 16,),
+            ElevatedButton(
+              onPressed: (){
+                showModalBottomSheet(
+                  backgroundColor: Colors.black12,
+                    barrierColor: Colors.black38,
+                    enableDrag: false,
+                    isDismissible: false,
+                    context: context,
+                    builder: (ctx){
+                  return SizedBox(
+                    height: 600,
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text('Title'),
+                        ),
+                        Divider(),
+                        Column(
+                          children: [],
+                        )
+                      ],
+                    ),
+                  );
+                });
+              },
+              child: Text('Show Bottom sheet'),
+            ),
+
+          ],
+        ),
       ),
     );
   }
