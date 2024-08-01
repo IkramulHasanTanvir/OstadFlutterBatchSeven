@@ -1,7 +1,8 @@
 // Current SDK version: 3.22.1
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ostad_flutter_live_class/Home.dart';
+import 'package:ostad_flutter_live_class/home.dart';
+import 'package:ostad_flutter_live_class/profile_page.dart';
 
 // TextField
 
@@ -14,9 +15,9 @@ class IntoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
+    return CupertinoApp(
+      debugShowCheckedModeBanner: true,
+      home: ProfilePage(),
       // theme: ThemeData(
       //   brightness: Brightness.light,
       //   appBarTheme: AppBarTheme(
