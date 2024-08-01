@@ -1,7 +1,7 @@
 // Current SDK version: 3.22.1
 import 'package:flutter/material.dart';
 
-// Container, dialog, bottom-sheet
+// TextField
 
 void main() {
   runApp(IntoApp());
@@ -15,6 +15,72 @@ class IntoApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        appBarTheme: AppBarTheme(
+            color: Colors.pink,
+            titleTextStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2.0,
+            )),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(foregroundColor: Colors.pink),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: Colors.red, width: 2)),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: Colors.green,
+              width: 2,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: Colors.yellow,
+              width: 2,
+            ),
+          ),
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        appBarTheme: AppBarTheme(
+            color: Colors.pink,
+            titleTextStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2.0,
+            )),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(foregroundColor: Colors.pink),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              width: 0.5,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              width: 0.5,
+              color: Colors.pink,
+            ),
+          ),
+        ),
+      ),
+      themeMode: ThemeMode.system,
     );
   }
 }
@@ -27,163 +93,91 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController _descriptionTEController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Home'),
-        backgroundColor: Colors.blue,
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 100,
-              height: 100,
-              // color: Colors.green,
-              //padding: EdgeInsets.all(20),
-              // padding: EdgeInsets.symmetric(
-              //   vertical: 8,
-              //   horizontal: 4,
-              // ),
-              padding: EdgeInsets.only(
-                bottom: 8,
-              ),
-              margin: EdgeInsets.all(16),
-              alignment: Alignment.bottomRight,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                border: Border.all(
-                  color: Colors.red,
-                  width: 4,
-                ),
-                // borderRadius: BorderRadius.circular(16),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
-                ),
-                // shape: BoxShape.circle,
-                image: DecorationImage(
-                    image: AssetImage('assets/images/shirt.jpg'),
-                    fit: BoxFit.cover,
-                    opacity: 4),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.red.withOpacity(0.5),
-                    spreadRadius: 3,
-                    blurRadius: 8,
-                    offset: Offset(0, 3),
-                  ),
-                  BoxShadow(
-                    color: Colors.red.withOpacity(0.2),
-                    spreadRadius: 3,
-                    blurRadius: 8,
-                    offset: Offset(0, 6),
-                  )
-                ],
-              ),
-              child: Text(
-                'selles man',
-                style: TextStyle(
-                  color: Colors.amber,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              TextField(
+                enabled: true,
+                decoration: InputDecoration(
+                  label: Text('Name'),
+                  hintText: 'Enter Your Name',
+                  icon: Icon(Icons.add),
+                  prefixIcon: Icon(Icons.search),
+                  suffixIcon:
+                      TextButton(onPressed: () {}, child: Text('Search')),
                 ),
               ),
-            ),
-            Container(
-              width: 100,
-              height: 100,
-              color: Colors.amber,
-              margin: EdgeInsets.all(16),
-              padding: EdgeInsets.all(8),
-            ),
-            Padding(
-              padding: EdgeInsets.all(24.0),
-              child: Text('sounds'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // showAboutDialog(
-                //   context: context,
-                //   applicationName: 'Sample',
-                //   applicationVersion: '1.0.6',
-                //   children: [
-                //     Text('Sample')
-                //   ],
-                // );
-                showDialog(
-                    context: context,
-                    barrierDismissible:false,
-                    barrierColor: Colors.black38,
-                    builder: (ctx) {
-                      return AlertDialog(
-                        title: Text('Our custom dialog'),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Sample Text'),
-                            Text('Sample Text'),
-                            Text('Sample Text'),
-                          ],
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text('Cancel'),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text('Open'),
-                          ),
-                        ],
-                        shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(8),
-                          //borderRadius: BorderRadius.zero
-                        ),
-
-                      );
-                    });
-              },
-              child: Text('Dialog'),
-            ),
-            SizedBox(height: 16,),
-            ElevatedButton(
-              onPressed: (){
-                showModalBottomSheet(
-                  backgroundColor: Colors.black12,
-                    barrierColor: Colors.black38,
-                    enableDrag: false,
-                    isDismissible: false,
-                    context: context,
-                    builder: (ctx){
-                  return SizedBox(
-                    height: 600,
-                    width: double.infinity,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Text('Title'),
-                        ),
-                        Divider(),
-                        Column(
-                          children: [],
-                        )
-                      ],
-                    ),
-                  );
-                });
-              },
-              child: Text('Show Bottom sheet'),
-            ),
-
-          ],
+              SizedBox(height: 16),
+              TextField(
+                textAlign: TextAlign.start,
+                controller: _descriptionTEController,
+                enabled: true,
+                maxLines: 5,
+                maxLength: 200,
+                onTap: () {
+                  print('Print TextField');
+                },
+                onChanged: (String value) {
+                  print(value);
+                },
+                decoration: InputDecoration(
+                  alignLabelWithHint: true,
+                  label: Text('Description'),
+                  hintText: 'Enter Your Description',
+                ),
+              ),
+              SizedBox(height: 16),
+              TextField(
+                enabled: true,
+                onChanged: (String value) {
+                  print(value);
+                },
+                obscureText: true,
+                controller: TextEditingController(),
+                decoration: InputDecoration(
+                  label: Text('Password'),
+                  hintText: 'Enter Your Password',
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              TextButton(
+                onPressed: () {
+                  _descriptionTEController.clear();
+                },
+                child: Text('Clear Description'),
+              ),
+              SizedBox(height: 16),
+              TextField(),
+              SizedBox(height: 16),
+              TextField(),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class SettingScreen extends StatelessWidget {
+  const SettingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Setting'),
       ),
     );
   }
