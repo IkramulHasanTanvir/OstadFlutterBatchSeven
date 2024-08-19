@@ -1,13 +1,7 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    DevicePreview(
-      enabled: true,
-      builder: (context) => MyApp(),
-    ),
-  );
+void main(){
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,81 +11,42 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
       home: Home(),
     );
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
   Widget build(BuildContext context) {
-    //MediaQuery
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
-    print('width ${mediaQueryData.size.width}');
-    print('height ${mediaQueryData.size.height}');
-    print('aspect ${mediaQueryData.size.aspectRatio}');
-    print('flipped ${mediaQueryData.size.flipped.height}');
-
-    print('display ${mediaQueryData.devicePixelRatio}');
-
-    if (mediaQueryData.size.width < 640) {
-      print('this is a Phone');
-    } else if (mediaQueryData.size.width > 640 &&
-        mediaQueryData.size.width < 1008) {
-      print('this is a table');
-    } else {
-      print('Laptop');
-    }
     return Scaffold(
       appBar: AppBar(
-        title: Text('AppBar'),
-        backgroundColor: Colors.blue,
+        title: Text('Home'),
       ),
-      // body: OrientationBuilder(builder: (context, Orientation orientation) {
-      //   print(orientation);
-      //   if (orientation == Orientation.portrait) {
-      //     return Column(
-      //       children: [
-      //         Wrap(
-      //           alignment: WrapAlignment.center,
-      //           crossAxisAlignment: WrapCrossAlignment.center,
-      //           // runAlignment: WrapAlignment.center,
-      //           spacing: 16,
-      //           children: [
-      //             Text('hy brother whats up?'),
-      //             Text('hy brother'),
-      //             Text('hy brother '),
-      //             Text('hy brother whats up?'),
-      //           ],
-      //         ),
-      //         Text(orientation.name),
-      //       ],
-      //     );
-      //   } else {
-      //     return Center(
-      //       child: Text('too big screen '),
-      //     );
-      //   }
-      // }),
-      body: LayoutBuilder(
-        builder: (context, BoxConstraints constraints) {
-          if (constraints.maxWidth < 640) {
-            return Text('this a phone');
-          } else if (constraints.maxWidth > 640 &&
-              constraints.maxWidth < 1008) {
-            return Text('this is a table');
-          } else {
-            return Text('this is a laptop');
-          }
-        },
+      body: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.width,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.amber,
+            child: FractionallySizedBox(
+              heightFactor: 0.4,
+              widthFactor: 0.6,
+              child: Container(
+                color: Colors.red,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
 }
+
