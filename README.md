@@ -1,16 +1,5 @@
-# ostad_flutter_live_class
+# FractionallySizedBox Widget
 
-A new Flutter project.
+UI • [Dribbble](https://dribbble.com/shots/24711358-FractionallySizedBox-widget-in-Flutter)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Click this banner and watch tutorial in youtube • [![](https://cdn.dribbble.com/userupload/16149622/file/original-7c0b471e5268feb3574d6c5baa535121.png?resize=1024x576)]()
