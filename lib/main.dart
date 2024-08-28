@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,70 +9,111 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: HomeScreen(),
     );
   }
 }
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  // @override
+  // State<StatefulWidget> createState() {
+  //   return HomeScreenState();
+  // }
   @override
-  State<Home> createState() => _HomeState();
+  State<StatefulWidget> createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
+  int counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant HomeScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+  }
+
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.sizeOf(context).width);
-    print(MediaQuery.of(context).size.width);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
-        backgroundColor: Colors.blue,
+        title: const Text('Home'),
       ),
-      // body: SizedBox(
-      //   width: MediaQuery.of(context).size.width,
-      //   child: Column(
-      //     children: [
-      //       Flexible(child: Container(
-      //         color: Colors.blue,
-      //         width: 100,
-      //       ),),
-      //       Flexible(child: Container(
-      //         color: Colors.green,
-      //         width: 200,
-      //       ),),
-      //       Flexible(child: Container(
-      //         color: Colors.red,
-      //         width: 200,
-      //       ),),
-      //       Flexible(child: Container(
-      //         color: Colors.orange,
-      //         width: 200,
-      //         height: 100,
-      //       ),),
-      //       Flexible(child: Container(
-      //         color: Colors.pink,
-      //         width: 200,
-      //       ),),
-      //       AspectRatio(
-      //         aspectRatio: 16 / 9,
-      //         child: Container(
-      //         color: Colors.deepPurple,
-      //       ),),
-      //       LayoutBuilder(builder: (context, constraints){
-      //         return Text(constraints.maxWidth.toString());
-      //       }),
-      //
-      //     ],
-      //   ),
-      // ),
-      body: LayoutBuilder(builder: (context, constraints) {
-        return Text(constraints.maxWidth.toString());
-      }),
+      body: Center(
+        child: Text(
+          'counter $counter times',
+          style: const TextStyle(
+            fontSize: 24,
+          ),
+        ),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              counter--;
+              setState(() {});
+            },
+            child: const Icon(Icons.remove),
+          ),
+          const SizedBox(width: 16),
+          FloatingActionButton(
+            onPressed: () {
+              counter++;
+              setState(() {});
+            },
+            child: const Icon(Icons.add),
+          ),
+        ],
+      ),
     );
   }
+  @override
+  void deactivate() {
+    super.deactivate();
+  }
+  @override
+  void dispose() {
+    super.dispose();
+  }
 }
+
+// class Home extends StatelessWidget {
+//   Home({super.key});
+//
+//   int counter = 0;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Home'),
+//       ),
+//       body: Center(
+//         child: Text(
+//           'counter $counter times',
+//           style: TextStyle(
+//             fontSize: 24,
+//           ),
+//         ),
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: () {},
+//         child: Icon(Icons.add),
+//       ),
+//     );
+//   }
+// }
