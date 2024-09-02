@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ostad_flutter_live_class/home_screen.dart';
+import 'package:ostad_flutter_live_class/my_home.dart';
 
-class SumApp extends StatelessWidget {
-  const SumApp({super.key});
+class WaterTrackerApp extends StatelessWidget {
+  const WaterTrackerApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: MyHome(),
     );
   }
 }
